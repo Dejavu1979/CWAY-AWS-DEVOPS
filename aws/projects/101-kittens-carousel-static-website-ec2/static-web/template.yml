@@ -1,0 +1,16 @@
+AWSTemplateFormatVersion: 2010-09-09
+	
+    Description: This template creates an EC2 instance which enables SSH connection. #bu bir commenttir.
+
+    Resources: 
+      SelimCFInstance: 
+	    Type: AWS::EC2::Instance
+      Properties:
+	      ImageId: ami-0c94855ba95c71c99
+	      InstanceType: t2.micro
+        KeyName: test
+        SecurityGroups: 
+	        - SG_project1
+        Tags: 
+          - Key: Name
+            Value: selim-cf-instance
