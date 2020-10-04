@@ -26,7 +26,7 @@ Resources:
     Properties:
       ImageId: ami-09d95fab7fff3776c
       InstanceType: t2.micro
-      KeyName: E2031-Salih_Virginia
+      KeyName: E2080-Selami_Virginia
       SecurityGroupIds:
         - !Ref TEDSecurityGroup
       Tags:                
