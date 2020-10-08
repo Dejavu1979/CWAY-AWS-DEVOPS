@@ -33,19 +33,21 @@ Resources:
       Tags:
         - Key: Name
           Value: !Sub Web Server of ${AWS::StackName} Stack 
-      UserData: !Base64 |
-          #! /bin/bash
-          yum update -y
-          yum install python3 -y
-          pip3 install flask
-          cd /home/ec2-user
-          wget https://raw.githubusercontent.com/Dejavu1979/CWAY-AWS-DEVOPS/master/001-project-roman-numerals-converter/app.py
-          mkdir templates
-          cd templates
-          wget https://raw.githubusercontent.com/Dejavu1979/CWAY-AWS-DEVOPS/clarusway-python-workshop/master/001-project-roman-numerals-converter/templates/index.html
-          wget https://raw.githubusercontent.com/Dejavu1979/CWAY-AWS-DEVOPS/clarusway-python-workshop/master/001-project-roman-numerals-converter/templates/result.html
-          cd ..
-          python3 app.py
+      UserData: 
+        Fn::Base64:
+          !Sub |
+            #! /bin/bash
+            yum update -y
+            yum install -y python3
+            pip3 install flask
+        cd /home/ec2-user
+        wget https://raw.githubusercontent.com/Dejavu1979/CWAY-AWS-DEVOPS/master/aws/projects/001-roman-numerals-converter/Project%202%20app.py
+        mkdir templates
+        cd templates
+        wget https://raw.githubusercontent.com/Dejavu1979/CWAY-AWS-DEVOPS/master/aws/projects/001-roman-numerals-converter/templates/index.html
+        wget https://raw.githubusercontent.com/Dejavu1979/CWAY-AWS-DEVOPS/master/aws/projects/001-roman-numerals-converter/templates/result.html
+        cd ..
+        python3 Project 2 app.py
 
 Outputs: 
   WebsiteURL:
