@@ -40,14 +40,14 @@ Resources:
             yum update -y
             yum install -y python3
             pip3 install flask
-        cd /home/ec2-user
-        wget https://raw.githubusercontent.com/Dejavu1979/CWAY-AWS-DEVOPS/master/aws/projects/001-roman-numerals-converter/Project%202%20app.py
-        mkdir templates
-        cd templates
-        wget https://raw.githubusercontent.com/Dejavu1979/CWAY-AWS-DEVOPS/master/aws/projects/001-roman-numerals-converter/templates/index.html
-        wget https://raw.githubusercontent.com/Dejavu1979/CWAY-AWS-DEVOPS/master/aws/projects/001-roman-numerals-converter/templates/result.html
-        cd ..
-        python3 Project 2 app.py
+            cd /home/ec2-user
+            wget https://raw.githubusercontent.com/Dejavu1979/CWAY-AWS-DEVOPS/master/aws/projects/001-roman-numerals-converter/Project_2_app.py
+            mkdir templates
+            cd templates
+            wget https://raw.githubusercontent.com/Dejavu1979/CWAY-AWS-DEVOPS/master/aws/projects/001-roman-numerals-converter/templates/index.html
+            wget https://raw.githubusercontent.com/Dejavu1979/CWAY-AWS-DEVOPS/master/aws/projects/001-roman-numerals-converter/templates/result.html
+            cd ..
+            python3 Project_2_app.py
 
 Outputs: 
   WebsiteURL:
