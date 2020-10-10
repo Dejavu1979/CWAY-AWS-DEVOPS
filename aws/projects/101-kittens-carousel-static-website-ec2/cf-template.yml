@@ -1,0 +1,53 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: |
+  Bu template'yi clarusway projesi kapsamında yaptık.
+  
+Resources:
+  
+  WebServerSecurityGroup:
+    Type: "AWS::EC2::SecurityGroup"
+    Properties:
+      GroupDescription: Base Security Group
+      GroupName: ApacheSG
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0  
+
+  Projectinstance:
+    Type: "AWS::EC2::Instance"
+    Properties:
+      ImageId: ami-0c94855ba95c71c99
+      InstanceType: t2.micro
+      KeyName: flask
+      SecurityGroupIds:
+        - !Ref WebServerSecurityGroup
+      Tags:
+        - Key: Name
+          Value: !Sub Web Server of ${AWS::StackName}
+      UserData:
+        Fn::Base64:
+          !Sub |
+            #! /bin/bash
+            yum update -y
+            yum install -y httpd
+            DATE_TIME=`date`
+            cd /var/www/html
+            wget https://raw.githubusercontent.com/Dejavu1979/CWAY-AWS-DEVOPS/master/aws/projects/101-kittens-carousel-static-website-ec2/static-web/index.html
+            wget https://raw.githubusercontent.com/Dejavu1979/CWAY-AWS-DEVOPS/master/aws/projects/101-kittens-carousel-static-website-ec2/static-web/cat0.jpg
+            wget https://raw.githubusercontent.com/Dejavu1979/CWAY-AWS-DEVOPS/master/aws/projects/101-kittens-carousel-static-website-ec2/static-web/cat1.jpg
+            wget https://raw.githubusercontent.com/Dejavu1979/CWAY-AWS-DEVOPS/master/aws/projects/101-kittens-carousel-static-website-ec2/static-web/cat2.jpg
+            systemctl start httpd
+            systemctl enable httpd
+     
+Outputs:
+  Kittens Carousel Application Website URL:
+    Description: Kittens Carousel Application Website URL
+    Value: !Sub 
+      - http://${PublicAddress}
+      - PublicAddress: !GetAtt Projectinstance.PublicDnsName
