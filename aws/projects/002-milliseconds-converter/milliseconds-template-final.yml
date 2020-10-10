@@ -57,8 +57,8 @@ Resources:
               pip3 install flask
               cd /home/ec2-user
               wget https://raw.githubusercontent.com/Dejavu1979/CWAY-AWS-DEVOPS/master/aws/projects/002-milliseconds-converter/app.py
-              wget -P templates https://raw.githubusercontent.com/E2080-Selim/cw_AWS_Dev_Ops_Workshop/master/aws/projects/002-milliseconds-converter/templates/index.html
-              wget -P templates https://raw.githubusercontent.com/E2080-Selim/cw_AWS_Dev_Ops_Workshop/master/aws/projects/002-milliseconds-converter/templates/result.html
+              wget -P templates https://raw.githubusercontent.com/Dejavu1979/CWAY-AWS-DEVOPS/master/aws/projects/002-milliseconds-converter/templates/index.html
+              wget -P templates https://raw.githubusercontent.com/Dejavu1979/CWAY-AWS-DEVOPS/master/aws/projects/002-milliseconds-converter/templates/result.html
               python3 app.py
    
   LoadBalancer:
